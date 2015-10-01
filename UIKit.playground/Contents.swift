@@ -19,8 +19,8 @@ label.text = "Hello world!"
 label.sizeToFit()
 
 let buttonView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
-let button = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-button.setTitle("Button", forState: nil)
+let button = UIButton(type: .System)
+button.setTitle("Button", forState: .Normal)
 button.sizeToFit()
 button.center = CGPoint(x: 100, y: 25)
 button.tintColor = UIColor.redColor()
@@ -91,7 +91,7 @@ class PlayCollectionViewController : UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlayCell", forIndexPath: indexPath) as! UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlayCell", forIndexPath: indexPath)
         cell.backgroundColor = UIColor.yellowColor()
         return cell
     }
@@ -132,11 +132,12 @@ class PlayPickerData : NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return fruits.count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return fruits[row]
     }
 }
