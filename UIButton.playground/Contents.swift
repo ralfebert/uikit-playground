@@ -1,9 +1,32 @@
 import UIKit
+import PlaygroundSupport
 
-let buttonView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
-let button = UIButton(type: .System)
-button.setTitle("Button", forState: .Normal)
-button.sizeToFit()
-button.center = CGPoint(x: 100, y: 25)
-button.tintColor = UIColor.redColor()
-buttonView.addSubview(button)
+class ButtonViewController : UIViewController {
+
+    override func loadView() {
+
+        // UI
+
+        let view = UIView()
+        view.backgroundColor = .white
+
+        let button = UIButton(type: .system)
+        button.setTitle("Button", for: .normal)
+        button.tintColor = .red
+
+        view.addSubview(button)
+
+        // Layout
+
+        button.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            button.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+        ])
+
+        self.view = view
+    }
+    
+}
+
+PlaygroundPage.current.liveView = ButtonViewController()

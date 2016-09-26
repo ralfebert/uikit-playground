@@ -1,9 +1,16 @@
 import UIKit
-import XCPlayground
+import PlaygroundSupport
 
-let webView = UIWebView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
-webView.loadHTMLString("<i>Hello world</i>", baseURL: nil)
+class WebViewController : UIViewController {
 
-// Show in playground timeline
-import XCPlayground
-XCPShowView("WebView", view: webView)
+    override func loadView() {
+
+        let webView = UIWebView()
+        webView.loadHTMLString("<a href='http://www.example.com/'>Hello world</a>", baseURL: nil)
+
+        self.view = webView
+    }
+
+}
+
+PlaygroundPage.current.liveView = WebViewController()

@@ -2,21 +2,21 @@ import UIKit
 
 // Color constants
 
-UIColor.blackColor()
-UIColor.darkGrayColor()
-UIColor.lightGrayColor()
-UIColor.whiteColor()
-UIColor.grayColor()
-UIColor.redColor()
-UIColor.greenColor()
-UIColor.blueColor()
-UIColor.cyanColor()
-UIColor.yellowColor()
-UIColor.magentaColor()
-UIColor.orangeColor()
-UIColor.purpleColor()
-UIColor.brownColor()
-UIColor.clearColor()
+UIColor.black
+UIColor.darkGray
+UIColor.lightGray
+UIColor.white
+UIColor.gray
+UIColor.red
+UIColor.green
+UIColor.blue
+UIColor.cyan
+UIColor.yellow
+UIColor.magenta
+UIColor.orange
+UIColor.purple
+UIColor.brown
+UIColor.clear
 
 // Color by component value
 

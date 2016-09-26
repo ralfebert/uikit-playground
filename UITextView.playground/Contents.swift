@@ -1,7 +1,16 @@
 import UIKit
+import PlaygroundSupport
 
-let textView = UITextView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
-textView.text = "UITextView"
-textView.sizeToFit()
+class TextViewController : UIViewController {
 
+    override func loadView() {
 
+        let textView = UITextView()
+        textView.text = "Hello World!\nHello Playground!"
+
+        self.view = textView
+    }
+    
+}
+
+PlaygroundPage.current.liveView = TextViewController()

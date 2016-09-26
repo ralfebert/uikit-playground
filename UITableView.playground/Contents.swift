@@ -1,24 +1,24 @@
 import UIKit
+import PlaygroundSupport
 
-class PlayTableViewController : UITableViewController {
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+class TableViewController : UITableViewController {
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.textLabel?.text = "Cell \(indexPath.section).\(indexPath.row)"
         return cell
     }
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Section \(section)"
     }
-    
+
 }
 
-let tableViewController = PlayTableViewController(style: UITableViewStyle.Plain)
-tableViewController.tableView.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
+let tableViewController = TableViewController(style: .plain)
 
-
+PlaygroundPage.current.liveView = tableViewController

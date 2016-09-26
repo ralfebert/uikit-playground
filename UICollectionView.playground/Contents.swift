@@ -1,24 +1,24 @@
 import UIKit
+import PlaygroundSupport
 
-class PlayCollectionViewController : UICollectionViewController {
-    
+class CollectionViewController : UICollectionViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView?.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "PlayCell")
+        self.collectionView?.backgroundColor = .white
+        self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "PlayCell")
     }
-    
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
-    
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlayCell", forIndexPath: indexPath)
-        cell.backgroundColor = UIColor.yellowColor()
+
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayCell", for: indexPath)
+        cell.backgroundColor = .green
         return cell
     }
-    
+
 }
 
-let collectionViewController = PlayCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
-collectionViewController.collectionView!.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
-collectionViewController.collectionView!.backgroundColor = UIColor.whiteColor()
+PlaygroundPage.current.liveView = CollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())

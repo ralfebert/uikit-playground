@@ -1,26 +1,27 @@
 import UIKit
-import XCPlayground
+import PlaygroundSupport
 
-class PlayPickerData : NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
+class PickerData : NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     let fruits = ["Apple", "Orange", "Banana"]
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return fruits.count
     }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return fruits[row]
     }
 }
 
-let pickerData = PlayPickerData()
+let pickerData = PickerData()
 let pickerView = UIPickerView()
+pickerView.backgroundColor = .white
 pickerView.dataSource = pickerData
 pickerView.delegate = pickerData
+pickerView.reloadAllComponents()
 
-// Show in playground timeline
-pickerView.backgroundColor = UIColor.whiteColor()
-XCPShowView("pickerView", view: pickerView)
+PlaygroundPage.current.liveView = pickerView
