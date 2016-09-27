@@ -3,6 +3,10 @@ import PlaygroundSupport
 
 class ButtonViewController : UIViewController {
 
+    var counter = 0
+
+    var label : UILabel!
+
     override func loadView() {
 
         // UI
@@ -10,23 +14,39 @@ class ButtonViewController : UIViewController {
         let view = UIView()
         view.backgroundColor = .white
 
-        let button = UIButton(type: .system)
-        button.setTitle("Button", for: .normal)
-        button.tintColor = .red
+        label = UILabel()
 
+        let button = UIButton(type: .system)
+        button.setTitle("Increment", for: .normal)
+        button.tintColor = .red
+        button.addTarget(self, action: #selector(updateView), for: .touchUpInside)
+
+        view.addSubview(label)
         view.addSubview(button)
 
         // Layout
 
+        label.translatesAutoresizingMaskIntoConstraints = false
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            label.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+
+            button.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 20),
+            button.firstBaselineAnchor.constraint(equalTo: label.firstBaselineAnchor),
         ])
 
         self.view = view
+
+        updateView()
+    }
+
+    func updateView() {
+        counter += 1
+        label.text = "Counter: \(counter)"
     }
     
 }
+
 
 PlaygroundPage.current.liveView = ButtonViewController()

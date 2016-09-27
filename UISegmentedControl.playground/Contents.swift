@@ -3,6 +3,11 @@ import PlaygroundSupport
 
 class SegmentsViewController : UIViewController {
 
+    let items = ["A", "B", "C"]
+
+    var label : UILabel!
+    var segments : UISegmentedControl!
+
     override func loadView() {
 
         // UI
@@ -10,21 +15,39 @@ class SegmentsViewController : UIViewController {
         let view = UIView()
         view.backgroundColor = .white
 
-        let segmentedControl = UISegmentedControl(items: ["A", "B", "C"])
+        label = UILabel()
 
-        view.addSubview(segmentedControl)
+        segments = UISegmentedControl(items: items)
+        segments.addTarget(self, action: #selector(updateView), for: .valueChanged)
+
+        view.addSubview(label)
+        view.addSubview(segments)
 
         // Layout
 
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        segments.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            segmentedControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            ])
+            segments.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            segments.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+
+            label.topAnchor.constraint(equalTo: segments.bottomAnchor, constant: 20),
+            label.centerXAnchor.constraint(equalTo: segments.centerXAnchor),
+
+        ])
 
         self.view = view
+
+        updateView()
     }
 
+    func updateView() {
+        let idx = segments.selectedSegmentIndex
+        let current = (idx == UISegmentedControlNoSegment) ? "none" : items[idx]
+        label.text = "Current segment: \(current)"
+    }
+    
 }
+
 
 PlaygroundPage.current.liveView = SegmentsViewController()
