@@ -41,7 +41,7 @@ class SegmentsViewController : UIViewController {
         updateView()
     }
 
-    func updateView() {
+    @objc func updateView() {
         let idx = segments.selectedSegmentIndex
         let current = (idx == UISegmentedControlNoSegment) ? "none" : items[idx]
         label.text = "Current segment: \(current)"

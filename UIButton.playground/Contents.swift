@@ -53,12 +53,12 @@ class ButtonViewController : UIViewController {
         updateView()
     }
 
-    func updateView() {
+    @objc func updateView() {
         counter += 1
         label.text = "Counter: \(counter)"
     }
 
-    func toggleStarred() {
+    @objc func toggleStarred() {
         self.starred = !self.starred
     }
 

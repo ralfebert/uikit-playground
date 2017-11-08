@@ -44,7 +44,7 @@ class TextFieldViewController : UIViewController, UITextFieldDelegate {
         updateLabel()
     }
 
-    func updateLabel() {
+    @objc func updateLabel() {
         self.label.text = textField.text
     }
 

@@ -43,7 +43,7 @@ class StepperViewController : UIViewController {
         updateView()
     }
 
-    func updateView() {
+    @objc func updateView() {
         label.text = "Counter: \(Int(stepper.value))"
     }
     
