@@ -1,0 +1,12 @@
+task :default do 
+
+	Dir["../*.playground"].each do |playground| 
+		name = File.basename(playground, ".*")
+		dir = "Chapter 1.playground/Pages/#{name}.xcplaygroundpage"
+		FileUtils.mkdir_p(dir)
+		FileUtils.cp(File.join(playground, "Contents.swift"), "#{dir}/Contents.swift")
+	end
+
+	system("playgroundbook render book.yaml")
+
+end
