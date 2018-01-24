@@ -36,7 +36,7 @@ class StepperViewController : UIViewController {
 
             stepper.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 20),
             stepper.centerYAnchor.constraint(equalTo: label.centerYAnchor),
-            ])
+        ])
 
         self.view = view
 

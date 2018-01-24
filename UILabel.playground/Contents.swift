@@ -1,6 +1,4 @@
 import UIKit
-
-import UIKit
 import PlaygroundSupport
 
 class LabelViewController : UIViewController {
