@@ -39,7 +39,7 @@ class TextFieldViewController : UIViewController, UITextFieldDelegate {
 
         // Events
 
-        textField.addTarget(self, action: #selector(updateLabel), for: UIControlEvents.editingChanged)
+        textField.addTarget(self, action: #selector(updateLabel), for: UIControl.Event.editingChanged)
 
         updateLabel()
     }
